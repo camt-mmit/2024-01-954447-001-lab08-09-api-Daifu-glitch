@@ -10,6 +10,7 @@ import { ContactsService } from './services/contacts.service';
 import { EventService } from './services/event.service';
 import { KeyValueLocalStorageService } from './services/key-value-local-storage.service';
 import { provideOauth } from './services/oauth.service';
+import { isDevMode } from '@angular/core';
 
 export default [
   {
@@ -23,7 +24,10 @@ export default [
         clientSecret: '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',
         authorizationCodeUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
         accessTokenUrl: 'https://oauth2.googleapis.com/token',
-        redirectUri: 'http://localhost:4200/google/authorization',
+        redirectUri:
+          isDevMode() ?
+            'http://localhost:4200/google/authorization '
+          : 'https://camt-mmit.github.io/2024-01-954447-001-lab08-09-api-Daifu-glitch/google/authorization ',
       }),
     ],
     children: [
